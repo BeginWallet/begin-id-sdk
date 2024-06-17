@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.3.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -33,6 +33,7 @@
   },
   "name": "@beginwallet/id",
   "author": "Begin Wallet",
+  "repository": "git://github.com:BeginWallet/begin-id-sdk.git",
   "module": "dist/begin-id.esm.js",
   "size-limit": [
     {
