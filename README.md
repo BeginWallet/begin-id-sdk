@@ -15,96 +15,49 @@ Here you can find how to install and use **BeginID** on your dApp or wallet to r
 - BeginID Resolver
 
 
-## Commands
+## Install
 
-This library is built on `Typescript` using TSDX and the source can be found at `/src`.
+To install BeginID on your project run.
 
 ```bash
-npm start # or yarn start
+npm install @beginwallet/id 
+or 
+yarn add @beginwallet/id
 ```
 
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
 
-To do a one-off build, use `npm run build` or `yarn build`.
+## Resolvers
 
-To run tests, use `npm test` or `yarn test`.
+With BeginID SDK you can resolve `Name` or `Address`.
 
-## Configuration
+For this release we're using a fixed API_KEY=`31cab9edcc1c530e29924a56167d4ed17d50b7fds`.
 
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
+### Resolve Name or Address (Payment or Rewards)
 
-### Jest
+```ts
+import { BeginId } from "@beginwallet/id";
 
-Jest tests are set up to run with `npm test` or `yarn test`.
+...
 
-### Bundle Analysis
+const beginId = new BeginId("31cab9edcc1c530e29924a56167d4ed17d50b7fds");
 
-[`size-limit`](https://github.com/ai/size-limit) is set up to calculate the real cost of your library with `npm run size` and visualize the bundle with `npm run analyze`.
+//Resolve Name
+const profile = await beginId.resolveAddress(name);
 
-#### Setup Files
+// OR
 
-This is the folder structure we set up for you:
+//Resolve Address
+const profile = await beginId.resolveAdressReverse(<PaymentAddress|RewardAddress>);
 
-```txt
-/src
-  index.tsx       # EDIT THIS
-/test
-  blah.test.tsx   # EDIT THIS
-.gitignore
-package.json
-README.md         # EDIT THIS
-tsconfig.json
 ```
 
-### Rollup
+### Examples
 
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
+Test Resolve Name:
+- `begin`
 
-### TypeScript
+Test Resolve Address:
+- Payment: `addr1q84x3qh7e0q6fldmj5mnk89vjlvgncsw5g9dmxmel4qt00j04mm39fw8l4pewc59xl59v7zszwye9vhuh3zwft8e5j9sslflq0`
+- Reward: `stake1u986aacj5hrl6suhv2zn06zk0pgp8zvjkt7tc38y4nu6fzcsg3cxt`
 
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
-
-## Continuous Integration
-
-### GitHub Actions
-
-Two actions are added by default:
-
-- `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
-- `size` which comments cost comparison of your library on every pull request using [`size-limit`](https://github.com/ai/size-limit)
-
-## Optimizations
-
-Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
-
-```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
-
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
-}
-```
-
-You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
-
-## Module Formats
-
-CJS, ESModules, and UMD module formats are supported.
-
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
-
-## Named Exports
-
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
-
-## Including Styles
-
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
-
-For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
-
-## Publishing to NPM
-
-We recommend using [np](https://github.com/sindresorhus/np).
+by [Begin Wallet](https://begin.is)

@@ -6,6 +6,8 @@ class BeginId {
         this.APIKEY = apikey;
     }
 
+    domainUrl = '.bgin.id';
+
     resolveAddress = async (name: string) => {
         let chainNumber = 1815;
 
@@ -22,7 +24,7 @@ class BeginId {
                 Authorization: this.APIKEY,
             },
             body: JSON.stringify({
-                name: name.replace('@', ''),
+                name: name.replace('@', '').replace(/(\.bgin\.id|\.beginid\.io|\.bgn\.is)$/, ''),
                 chain: chainNumber,
             }),
             }
@@ -39,7 +41,7 @@ class BeginId {
 
         return {
             name: result.name,
-            domain: `${result.name}.beginid.io`,
+            domain: `${''.concat(result.name, this.domainUrl)}`,
             image: result.image,
             address: result.addresses[chainNumber],
             text: result.text,
@@ -79,7 +81,7 @@ class BeginId {
 
         return {
             name: result.name,
-            domain: `${result.name}.beginid.io`,
+            domain: `${''.concat(result.name, this.domainUrl)}`,
             image: result.image,
             address: result.addresses[chainNumber],
         };
