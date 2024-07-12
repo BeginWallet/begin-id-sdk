@@ -4,6 +4,15 @@ Welcome to **Begin Wallet - BeginID**, your universal wallet address solution, p
 
 Here you can find how to install and use **BeginID** on your dApp or wallet to resolver addresses from supported blockchains.
 
+## What’s BeginID:
+- ⁠FREE
+- Like your X username
+- ⁠Real web domain
+  - Valid DNS name **`<username>.bgin.id`**
+- ⁠Your personal profile
+- Cross chain
+- ⁠Supported by ENS
+
 ## Modules
 
 - Cardano
